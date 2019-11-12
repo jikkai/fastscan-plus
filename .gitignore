@@ -1,2 +1,8 @@
 node_modules
+public
+lib
+dist
+.vscode
 
+*.log
+.DS_Store

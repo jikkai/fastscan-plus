@@ -1,28 +1,53 @@
 {
-  "name": "fastscan",
-  "version": "1.0.6",
+  "name": "fastscan-plus",
+  "version": "2.0.0",
   "description": "quickly search by ahocorasick algorithm ",
-  "main": "index.min.js",
+  "main": "lib/fastscan-plus.cjs.js",
   "scripts": {
-    "test": "mocha index.test.js",
-    "bench": "node --expose-gc index.bench.js"
+    "prebuild": "rimraf ./lib",
+    "build": "cross-env NODE_ENV=production rollup -c",
+    "lint": "eslint .",
+    "test": "npm run build && mocha ./tests/test.js",
+    "bench": "npm run build && node --expose-gc ./tests/bench.js",
+    "prepublishOnly": "npm run test && npm run build"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/pyloque/fastscan.git"
+    "url": "git+https://github.com/jikkai/fastscan-plus.git"
   },
   "keywords": [
     "ahocorasick",
     "javascript",
     "node"
   ],
-  "author": "qianwp",
+  "author": "qianwp, Jikkai Xiao <sonne@asaki.me>",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/pyloque/fastscan/issues"
+    "url": "https://github.com/jikkai/fastscan-plus/issues"
   },
-  "homepage": "https://github.com/pyloque/fastscan#readme",
+  "homepage": "https://github.com/jikkai/fastscan-plus#readme",
   "devDependencies": {
-    "mocha": "^5.2.0"
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "babel-eslint": "^10.0.2",
+    "cross-env": "^6.0.3",
+    "eslint": "^6.1.0",
+    "eslint-config-standard": "^14.1.0",
+    "eslint-friendly-formatter": "^4.0.1",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-node": "^10.0.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "mocha": "^5.2.0",
+    "rimraf": "^3.0.0",
+    "rollup": "^1.26.5",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-commonjs": "^10.0.2",
+    "rollup-plugin-eslint": "^7.0.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-replace": "^2.2.0",
+    "rollup-plugin-serve": "^1.0.1",
+    "rollup-plugin-uglify": "^6.0.2",
+    "svelte": "^3.13.0"
   }
 }
